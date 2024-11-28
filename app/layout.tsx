@@ -22,7 +22,8 @@ export default function RootLayout({
         className={twMerge(
           `${inter.className} antialiased`,
           "px-40",
-          "bg-primary-dark"
+          "bg-primary-dark",
+          "tracking-wider"
         )}
       >
         {children}

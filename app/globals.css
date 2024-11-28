@@ -18,3 +18,13 @@ body {
   width: 100vw;
   height: 100vh;
 }
+
+@keyframes boundingHero {
+  0% { opacity: 0; transform: translateY(10px); } 
+  50% { opacity: 100; transform: translateY(0); } 
+  100% { opacity: 0; transform: translateY(10px);}
+}
+
+.boundingHero{
+  animation: boundingHero 2s infinite;
+}

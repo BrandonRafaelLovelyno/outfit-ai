@@ -12,7 +12,9 @@ export default function HeroSection() {
         "flex flex-row justify-between items-center"
       )}
     >
-      <HeroTitle />
+      <div className={twMerge("max-w-[60%]")}>
+        <HeroTitle />
+      </div>
       <div className={twMerge("relative")}>
         <div
           className={twMerge(

@@ -4,9 +4,8 @@ import { IconType } from "react-icons"
 import { IoLayers } from "react-icons/io5";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { MdDataset } from "react-icons/md";
-import ModelCard from "@/components/container/model-card";
+import ModelCard from "@/components/section/model/model-card";
 import { twMerge } from "tailwind-merge";
-import Reveal from "@/components/framer-motion/reveal-on-scroll";
 import ModelCards from "./cards";
 
 const MODEL_CARDS: { title: string, description: string, Icon: IconType }[] = [

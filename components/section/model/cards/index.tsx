@@ -1,4 +1,4 @@
-import ModelCard from "@/components/container/model-card"
+import ModelCard from "@/components/section/model/cards/card"
 import Reveal from "@/components/framer-motion/reveal-on-scroll"
 import { IconType } from "react-icons"
 

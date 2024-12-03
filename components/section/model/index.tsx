@@ -7,6 +7,7 @@ import { MdDataset } from "react-icons/md";
 import ModelCard from "@/components/container/model-card";
 import { twMerge } from "tailwind-merge";
 import Reveal from "@/components/framer-motion/reveal-on-scroll";
+import ModelCards from "./cards";
 
 const MODEL_CARDS: { title: string, description: string, Icon: IconType }[] = [
   {
@@ -28,7 +29,7 @@ const MODEL_CARDS: { title: string, description: string, Icon: IconType }[] = [
 export default function ModelSection() {
   return <TitledSection title={<ModelTitle />}>
     <div className={twMerge("w-full", "flex flex-row gap-x-8")}>
-      {MODEL_CARDS.map((card, index) => (<Reveal key={index} x={-(index + 1) * 400} y={0} delay={(index + 1) * 0.3} duration={(index + 1) * 0.5} className="flex-1"><ModelCard  {...card} /></Reveal>))}
+      <ModelCards cards={MODEL_CARDS} />
     </div>
   </TitledSection>
 }

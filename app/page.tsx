@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/navbar";
 import ClassesSection from "@/components/section/classes";
+import DemoSection from "@/components/section/demo";
 import HeroSection from "@/components/section/hero";
 import ModelSection from "@/components/section/model";
 import { twMerge } from "tailwind-merge";
@@ -16,6 +17,7 @@ export default function Home() {
       <div className={twMerge("flex flex-col gap-y-56")}>
         <ModelSection />
         <ClassesSection />
+        <DemoSection />
       </div>
     </main>
   );

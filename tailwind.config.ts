@@ -8,6 +8,10 @@ export default {
   ],
   theme: {
     extend: {
+      aspectRatio: {
+        '16/9': '16 / 9',
+        '9/16': '9 / 16',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

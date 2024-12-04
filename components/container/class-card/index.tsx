@@ -20,7 +20,7 @@ export default function ClassCard({ clothClass, percentage }: Props) {
   const iconColor = CLASS_CARD_COLOR[clothClass].icon
 
   return (
-    <div className={twMerge("flex flex-row items-center gap-x-5", "p-6", "rounded-lg", "bg-opacity-30")} style={{ background: bgColor }}>
+    <div className={twMerge("flex flex-row items-center gap-x-5", "p-6", "rounded-lg")} style={{ background: bgColor }}>
       <div className={twMerge("relative", "w-24 h-24")}>
         <Image src={imageDir} fill={true} alt={clothClass} />
       </div>

@@ -4,15 +4,16 @@ import Carousel from "./carousel";
 import { twMerge } from "tailwind-merge";
 import { CLOTH_CLASSES } from "@/constant/bounding-box";
 import ClassCard from "@/components/container/class-card";
+import Reveal from "@/components/framer-motion/reveal-on-scroll";
 
 const getAllCard: () => React.ReactElement[] = () => {
   const cards: React.ReactElement[] = [];
 
   CLOTH_CLASSES.forEach((clothClass, index) => {
     cards.push(
-      <div className={twMerge("h-100")}>
+      <Reveal className={twMerge("h-100")} delay={Math.random() * 0.5 + 0.5} x={0} y={20} >
         <ClassCard key={index} clothClass={clothClass} />
-      </div>
+      </Reveal>
     )
   })
 

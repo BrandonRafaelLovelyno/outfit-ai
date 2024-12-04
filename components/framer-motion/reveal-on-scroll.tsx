@@ -13,7 +13,7 @@ interface Props {
   y?: number;
 }
 
-export default function Reveal({ children, className, duration = 0.5, delay = 0, x = 0, y = 0 }: Props) {
+export default function Reveal({ children, className, duration = 0.5, delay = 0.5, x = 0, y = 0 }: Props) {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,

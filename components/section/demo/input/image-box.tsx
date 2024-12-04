@@ -1,9 +1,7 @@
 "use client"
 
 import { twMerge } from "tailwind-merge"
-import { FaImage, FaTrash } from "react-icons/fa";
-import IconButton from "@/components/icon-button";
-import { RiRobot2Fill } from "react-icons/ri";
+import { FaImage } from "react-icons/fa";
 
 export default function ModelImageBox() {
   return <div className={twMerge("w-full flex-1", "flex flex-col justify-center items-center gap-y-6", "bg-[#6EACDA] bg-opacity-10", "border-2 border-secondary", "rounded-xl", "cursor-pointer")}>

@@ -14,7 +14,7 @@ export default function Home() {
       <div className={twMerge("h-[100vh]")}>
         <HeroSection />
       </div>
-      <div className={twMerge("flex flex-col gap-y-56")}>
+      <div className={twMerge("overflow-y-hidden", "flex flex-col gap-y-56")}>
         <ModelSection />
         <ClassesSection />
         <DemoSection />

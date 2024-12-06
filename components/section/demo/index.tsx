@@ -1,6 +1,6 @@
 import TitledSection from "@/components/container/titled-section";
 import DemoTitle from "./title";
-import ModelInput from "./input";
+import ModelInput from "./model-input";
 import { twMerge } from "tailwind-merge";
 import Reveal from "@/components/framer-motion/reveal-on-scroll";
 

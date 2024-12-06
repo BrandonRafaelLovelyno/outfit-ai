@@ -10,7 +10,7 @@ export default function ImageInput({ setImageUrl }: Props) {
   const { triggerIsDrag, clickInput, handleFileChange, inputRef, isDrag } = useImageInput({ setImageUrl })
 
 
-  return <div className={twMerge("w-full flex-1", "flex flex-col justify-center items-center gap-y-6",
+  return <div className={twMerge("w-full h-full", "flex flex-col justify-center items-center gap-y-6",
     "bg-[#6EACDA] bg-opacity-10", "border-2 border-secondary", "rounded-xl", "cursor-pointer")}
     onDragEnter={triggerIsDrag} onDragLeave={triggerIsDrag} onDragOver={triggerIsDrag}
     onClick={clickInput}>

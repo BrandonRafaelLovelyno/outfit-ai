@@ -6,8 +6,13 @@ import IconButton from "@/components/icon-button";
 import { RiRobot2Fill } from "react-icons/ri";
 import InputSample from "./sample";
 import ImageInput from "./image-input";
-import { useState } from "react";
+import React, { useState } from "react";
 import ImageViewer from "./image-viewer";
+import Reveal from "@/components/framer-motion/reveal-on-scroll";
+
+const IMAGE_CONTAINER_TRANSITION = { x: 0, y: 20 }
+
+const RevealContainer = ({ children }: { children: React.ReactNode }) => <Reveal className={twMerge("w-full h-full")} {...IMAGE_CONTAINER_TRANSITION} >{children}</Reveal>
 
 export default function ModelInput() {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -23,7 +28,7 @@ export default function ModelInput() {
       <h2>Model Input</h2>
 
       {
-        imageUrl ? <ImageViewer imageUrl={imageUrl} /> : <ImageInput setImageUrl={setImageUrl} />
+        imageUrl ? <RevealContainer key={"viewer"}><ImageViewer imageUrl={imageUrl} /></RevealContainer> : <RevealContainer key={"input"} ><ImageInput setImageUrl={setImageUrl} /></RevealContainer>
       }
 
       <div className={twMerge("ml-auto", "flex flex-row gap-x-5")}>

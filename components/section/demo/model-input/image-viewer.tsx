@@ -6,7 +6,7 @@ interface Props {
 }
 
 export default function ImageViewer({ imageUrl }: Props) {
-  return <div className={twMerge("relative", "w-full flex-1", "border-2 border-secondary", "rounded-xl")} >
+  return <div className={twMerge("relative", "w-full h-full", "border-2 border-secondary", "rounded-xl")} >
     <Image src={imageUrl} layout="fill" objectFit="contain" alt={imageUrl} />
   </div>
 }

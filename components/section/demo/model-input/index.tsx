@@ -9,15 +9,14 @@ import ImageInput from "./image-input";
 import React, { useState } from "react";
 import ImageViewer from "./image-viewer";
 import Reveal from "@/components/framer-motion/reveal-on-scroll";
+import useModelInput from "@/hooks/useModelInput";
 
 const IMAGE_CONTAINER_TRANSITION = { x: 0, y: 20 }
 
 const RevealContainer = ({ children }: { children: React.ReactNode }) => <Reveal className={twMerge("w-full h-full")} {...IMAGE_CONTAINER_TRANSITION} >{children}</Reveal>
 
 export default function ModelInput() {
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
-
-  const clearImage = () => setImageUrl(null)
+  const { imageUrl, setImageUrl, clearImage } = useModelInput();
 
   return (
     <div className={twMerge("relative", "h-[800px] w-[500px]", "flex flex-col items-start justify-center py-8 px-6 gap-y-5", "bg-[#6EACDA] bg-opacity-10", "rounded-xl")}>

@@ -2,6 +2,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import { twMerge } from "tailwind-merge";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,6 +27,17 @@ export default function RootLayout({
           "tracking-wider"
         )}
       >
+        <Toaster
+          toastOptions={
+            {
+              style: {
+                padding: '16px',
+                color: '#03346E',
+                background: '#FFFFFF',
+              },
+            }
+          }
+        />
         {children}
       </body>
     </html>

@@ -1,13 +1,15 @@
 import { fetchToBlob } from "@/helper/integration";
+import { Size } from "@/helper/model-input";
 import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 
 export default function useModelInput() {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [rescaledSize, setRescaledSize] = useState<Size | null>(null);
   const [uploading, setUploading] = useState(false);
 
-  const clearImage = () => setImageUrl(null);
+  const clearImage = () => { setImageUrl(null); setRescaledSize(null) };
 
   const submitImage = async () => {
     setUploading(true);
@@ -30,5 +32,7 @@ export default function useModelInput() {
     clearImage,
     uploading,
     submitImage,
+    rescaledSize,
+    setRescaledSize
   };
 }

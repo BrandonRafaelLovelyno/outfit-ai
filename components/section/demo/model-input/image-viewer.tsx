@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 
@@ -6,7 +8,7 @@ interface Props {
 }
 
 export default function ImageViewer({ imageUrl }: Props) {
-  return <div className={twMerge("relative", "w-full h-full", "border-2 border-secondary", "rounded-xl")} >
+  return <div className={twMerge("relative", "w-full h-full", "border-2 border-secondary", "rounded-xl", "overflow-hidden")} >
     <Image src={imageUrl} layout="fill" objectFit="contain" alt={imageUrl} />
   </div>
 }

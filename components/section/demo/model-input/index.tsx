@@ -6,29 +6,34 @@ import IconButton from "@/components/icon-button";
 import { RiRobot2Fill } from "react-icons/ri";
 import InputSample from "./sample";
 import ImageInput from "./image-input";
-import React, { useState } from "react";
+import React, { useMemo } from "react";
 import ImageViewer from "./image-viewer";
 import Reveal from "@/components/framer-motion/reveal-on-scroll";
 import useModelInput from "@/hooks/useModelInput";
+import { Size } from "@/helper/model-input";
 
-const IMAGE_CONTAINER_TRANSITION = { x: 0, y: 20 }
+const determineRevealProps = (imageUrl: string | null, rescaledSize: Size | null) => {
+  const transition = imageUrl ? { initial: { y: 20 }, animate: { y: 0 } } : { initial: { y: 0 }, animate: { y: 20 } }
+  const style = imageUrl && rescaledSize ? { width: rescaledSize.width, height: rescaledSize.height } : { width: 500, height: 800 }
 
-const RevealContainer = ({ children }: { children: React.ReactNode }) => <Reveal className={twMerge("w-full h-full")} {...IMAGE_CONTAINER_TRANSITION} >{children}</Reveal>
+  return { transition, style, }
+}
 
 export default function ModelInput() {
-  const { imageUrl, setImageUrl, clearImage } = useModelInput();
+  const { imageUrl, setImageUrl, clearImage, setRescaledSize, rescaledSize } = useModelInput();
+
+  const revealProps = useMemo(() => determineRevealProps(imageUrl, rescaledSize), [imageUrl, rescaledSize])
 
   return (
-    <div className={twMerge("relative", "h-[800px] w-[500px]", "flex flex-col items-start justify-center py-8 px-6 gap-y-5", "bg-[#6EACDA] bg-opacity-10", "rounded-xl")}>
-
-      {/* Absolute input sample */}
-      <InputSample />
+    <div className={twMerge("relative", "flex flex-col items-start justify-center py-8 px-6 gap-y-5", "bg-[#6EACDA] bg-opacity-10", "rounded-xl")}>
 
       <h2>Model Input</h2>
 
-      {
-        imageUrl ? <RevealContainer key={"viewer"}><ImageViewer imageUrl={imageUrl} /></RevealContainer> : <RevealContainer key={"input"} ><ImageInput setImageUrl={setImageUrl} /></RevealContainer>
-      }
+      <Reveal {...revealProps} key={imageUrl ? "viewer" : "input"}>
+        {
+          imageUrl ? <ImageViewer imageUrl={imageUrl} /> : <ImageInput setImageUrl={setImageUrl} setRescaledSize={setRescaledSize} />
+        }
+      </Reveal>
 
       <div className={twMerge("ml-auto", "flex flex-row gap-x-5")}>
         <IconButton title="Clear" Icon={FaTrash} onClick={clearImage} type="secondary" />

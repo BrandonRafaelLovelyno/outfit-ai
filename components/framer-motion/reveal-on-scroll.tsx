@@ -7,13 +7,14 @@ import { useEffect, useRef } from "react";
 interface Props {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   duration?: number;
   delay?: number;
   x?: number;
   y?: number;
 }
 
-export default function Reveal({ children, className, duration = 0.5, delay = 0.5, x = 0, y = 0 }: Props) {
+export default function Reveal({ children, className, duration = 0.5, delay = 0.5, x = 0, y = 0, style = {} }: Props) {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
@@ -26,7 +27,9 @@ export default function Reveal({ children, className, duration = 0.5, delay = 0.
 
   return <motion.div ref={ref} className={twMerge("relative", className)} variants={{ hidden: { x: x || -20, y: y || 20, opacity: 0 }, visible: { x: 0, y: 0, opacity: 100 } }}
     transition={{ duration: duration, delay: delay }}
-    animate={animation} initial="hidden">
+    animate={animation} initial="hidden"
+    style={style}
+  >
     {children}
   </motion.div>
 }

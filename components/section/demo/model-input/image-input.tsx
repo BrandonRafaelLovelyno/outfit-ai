@@ -1,13 +1,15 @@
 import { twMerge } from "tailwind-merge";
 import { FaImage } from "react-icons/fa";
 import useImageInput from "@/hooks/useImageInput";
+import { Size } from "@/helper/model-input";
 
 interface Props {
   setImageUrl: (image: string) => void
+  setRescaledSize: (size: Size) => void
 }
 
-export default function ImageInput({ setImageUrl }: Props) {
-  const { triggerIsDrag, clickInput, handleFileChange, inputRef, isDrag } = useImageInput({ setImageUrl })
+export default function ImageInput({ setImageUrl, setRescaledSize }: Props) {
+  const { triggerIsDrag, clickInput, handleFileChange, inputRef, isDrag } = useImageInput({ setImageUrl, setRescaledSize })
 
 
   return <div className={twMerge("w-full h-full", "flex flex-col justify-center items-center gap-y-6",

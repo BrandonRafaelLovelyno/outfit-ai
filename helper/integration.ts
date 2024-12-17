@@ -33,13 +33,20 @@ const handleError = (err: any) => {
   toast.error(message);
 }
 
-export const tryToExecute = async (func: () => Promise<void>, setUploading: (uploading: boolean) => void) => {
-  try {
-    setUploading(true);
-    await func();
-  } catch (err) {
-    handleError(err);
-  } finally {
-    setUploading(false);
-  }
-}
+export const tryToExecute = <T extends any[], R>(
+  func: (...args: T) => Promise<R> | R,
+  setLoading?: (loading: boolean) => void
+) => {
+  return async (...args: T): Promise<R | void> => {
+    try {
+      if (setLoading) setLoading(true);
+      const result = await func(...args);
+      return result;
+    } catch (err) {
+      handleError(err);
+    } finally {
+      if (setLoading) setLoading(false);
+    }
+  };
+};
+

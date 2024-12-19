@@ -27,3 +27,4 @@ export const IMAGE_RESOLUTION: { [key in I_Screen]: ResolutionConstraint } = {
     height: 400
   }
 }
+

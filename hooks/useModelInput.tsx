@@ -12,8 +12,6 @@ export default function useModelInput() {
   const clearImage = () => { setImageUrl(null); setRescaledSize(null) };
 
   const submitImage = async () => {
-    setUploading(true);
-
     if (!imageUrl) throw new Error("No image to upload.");
 
     const blob = await fetchToBlob(imageUrl);

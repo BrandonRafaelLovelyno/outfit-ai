@@ -1,5 +1,5 @@
 import { IMAGE_RESOLUTION } from "@/constant/model-input";
-import { getImageUrl, getRescaledSize } from "@/helper/model-input";
+import { getImageUrl, getRescaledSize, cleanImage } from "@/helper/model-input";
 import { DragEvent, useRef, useState } from "react";
 
 interface Props {
@@ -17,16 +17,13 @@ export default function useImageInput({ setImageUrl, setRescaledSize }: Props) {
   }
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files || !e.target.files[0]) return;
-
-    const file = e.target.files[0];
+    const file = await cleanImage(e, IMAGE_RESOLUTION.desktop.height, 1);
 
     const imageUrl = getImageUrl(file);
     setImageUrl(imageUrl);
 
     const targetHeight = IMAGE_RESOLUTION.desktop.height
     const rescaledSize = await getRescaledSize(imageUrl, targetHeight, 1);
-    console.log("rescaledSize", rescaledSize);
     setRescaledSize(rescaledSize);
   };
 

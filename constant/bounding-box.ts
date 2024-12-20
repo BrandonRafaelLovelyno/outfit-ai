@@ -1,5 +1,4 @@
-export const CLOTH_CLASSES: ClothClass[] = ["Short Sleeve Top", "Long Sleeve Top", "Short Sleeve Outwear", "Long Sleeve Outwear", "Vest", "Sling", "Sling Dress", "Vest Dress", "Long Sleeve Dress", "Short Sleeve Dress", "Trouser", "Shorts", "Skirt"];
-
+export const CLOTH_CLASSES: ClothClass[] = ["Short Sleeve Top", "Long Sleeve Top", "Short Sleeve Outwear", "Long Sleeve Outwear", "Vest", "Sling", "Shorts", "Trouser", "Skirt", "Short Sleeve Dress", "Long Sleeve Dress", "Vest Dress", "Sling Dress",]
 export type ClothClass =
   | "Short Sleeve Top"
   | "Long Sleeve Top"

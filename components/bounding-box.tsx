@@ -2,12 +2,12 @@ import { BOUNDING_BOX_COLOR, ClothClass } from "@/constant/bounding-box";
 import { twMerge } from "tailwind-merge";
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   clothClass: ClothClass;
   isHero: boolean;
 }
 
-export default function BoundingBox({ children, clothClass, isHero }: Props) {
+export default function BoundingBox({ children = <div />, clothClass, isHero }: Props) {
   const { headingBg, mainBg, border } = BOUNDING_BOX_COLOR[clothClass];
 
   return (
@@ -21,7 +21,7 @@ export default function BoundingBox({ children, clothClass, isHero }: Props) {
         )}
         style={{ background: headingBg }}
       >
-        <p className={twMerge("font-extrabold text-secondary")}>{clothClass}</p>
+        <p className={twMerge("font-extrabold text-secondary", !isHero && "text-sm")}>{clothClass}</p>
       </div>
       <div className={twMerge("relative", "flex-1 w-full")}>
         <div
@@ -29,7 +29,6 @@ export default function BoundingBox({ children, clothClass, isHero }: Props) {
             "absolute",
             "h-full w-full",
             `border-4`,
-            "-z-[1]",
             isHero && "boundingHero"
           )}
           style={{ borderColor: border, background: mainBg }}

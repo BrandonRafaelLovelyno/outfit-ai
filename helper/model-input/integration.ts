@@ -1,4 +1,11 @@
+import { Result } from "@/components/section/demo/model-input/image-viewer/result";
 import axios from "axios";
+
+interface Data {
+  boxes: number[][];
+  labels: number[];
+  scores: number[];
+}
 
 const convertBlobToFile = (blob: Blob) => {
   const mimeType = blob.type;
@@ -32,7 +39,17 @@ export const getBackendUrl = () => {
   return envUrl
 }
 
-export const callServer = async (imageUrl: string) => {
+const convertToResult = (data: Data): Result[] => {
+  const result = data.boxes.map((box, index) => ({
+    bbox: box,
+    label: data.labels[index],
+    confidence: data.scores[index]
+  }));
+
+  return result;
+}
+
+export const callServer = async (imageUrl: string): Promise<Result[]> => {
   const file = await getImageFile(imageUrl);
 
   const formData = new FormData();
@@ -41,5 +58,7 @@ export const callServer = async (imageUrl: string) => {
   const backendUrl = getBackendUrl();
   const response = await axios.post(`${backendUrl}/predict`, formData)
 
-  return response.data;
+  const result = convertToResult(response.data);
+
+  return result
 }

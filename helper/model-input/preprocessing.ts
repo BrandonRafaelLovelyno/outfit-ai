@@ -53,8 +53,8 @@ const validateImageSize = async (file: File, targetHeight: number, DPR: number) 
   const imageUrl = getImageUrl(file);
   const rescaledSize = await getRescaledSize(imageUrl, targetHeight, DPR);
 
-  const isTooSmall = rescaledSize.width < IMAGE_RESOLUTION.desktop.width.min;
-  const isTooLarge = rescaledSize.width > IMAGE_RESOLUTION.desktop.width.max;
+  const isTooSmall = rescaledSize.size.width < IMAGE_RESOLUTION.desktop.width.min;
+  const isTooLarge = rescaledSize.size.width > IMAGE_RESOLUTION.desktop.width.max;
 
   if (isTooSmall) {
     throw new Error("The image is too small.");
@@ -75,8 +75,10 @@ export const getRescaledSize = async (imageUrl: string, targetHeight: number, DP
   const ratio = targetHeight / height
 
   return {
-    width: width * ratio,
-    height: height * ratio
+    size: {
+      width: width * ratio,
+      height: height * ratio
+    }, ratio
   };
 }
 

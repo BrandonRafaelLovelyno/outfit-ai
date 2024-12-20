@@ -4,10 +4,11 @@ import { DragEvent, useRef, useState } from "react";
 
 interface Props {
   setRescaledSize: (size: { width: number, height: number }) => void
+  setRatio: (ratio: number) => void
   setImageUrl: (image: string) => void
 }
 
-export default function useImageInput({ setImageUrl, setRescaledSize }: Props) {
+export default function useImageInput({ setImageUrl, setRescaledSize, setRatio }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [isDrag, setIsDrag] = useState(false);
@@ -24,7 +25,8 @@ export default function useImageInput({ setImageUrl, setRescaledSize }: Props) {
 
     const targetHeight = IMAGE_RESOLUTION.desktop.height
     const rescaledSize = await getRescaledSize(imageUrl, targetHeight, 1);
-    setRescaledSize(rescaledSize);
+    setRescaledSize(rescaledSize.size);
+    setRatio(rescaledSize.ratio);
   };
 
   const triggerIsDrag = (e: DragEvent<HTMLDivElement>) => {

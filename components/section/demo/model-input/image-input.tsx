@@ -7,10 +7,11 @@ import { tryToExecute } from "@/helper/integration";
 interface Props {
   setImageUrl: (image: string) => void
   setRescaledSize: (size: Size) => void
+  setRatio: (ratio: number) => void
 }
 
-export default function ImageInput({ setImageUrl, setRescaledSize }: Props) {
-  const { triggerIsDrag, clickInput, setImageStates, inputRef, isDrag } = useImageInput({ setImageUrl, setRescaledSize })
+export default function ImageInput({ setImageUrl, setRescaledSize, setRatio }: Props) {
+  const { triggerIsDrag, clickInput, setImageStates, inputRef, isDrag } = useImageInput({ setImageUrl, setRescaledSize, setRatio });
 
   const onChange = tryToExecute(setImageStates)
 

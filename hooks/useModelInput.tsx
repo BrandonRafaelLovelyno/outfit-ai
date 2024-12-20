@@ -1,6 +1,6 @@
 import { fetchToBlob } from "@/helper/integration";
-import { Size } from "@/helper/model-input";
-import axios from "axios";
+import { callServer } from "@/helper/model-input/integration";
+import { Size } from "@/helper/model-input/preprocessing";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 
@@ -11,17 +11,11 @@ export default function useModelInput() {
 
   const clearImage = () => { setImageUrl(null); setRescaledSize(null) };
 
-  const submitImage = async () => {
-    if (!imageUrl) throw new Error("No image to upload.");
+  const processImage = async () => {
+    if (!imageUrl) throw new Error("No Image to process");
 
-    const blob = await fetchToBlob(imageUrl);
-
-    const formData = new FormData();
-    formData.append("image", blob);
-
-    const response = await axios.post("https://your-server-url/upload", formData)
-
-    toast.success(response.data.message);
+    const data = await callServer(imageUrl!);
+    console.log(data);
   };
 
   return {
@@ -29,7 +23,7 @@ export default function useModelInput() {
     setImageUrl,
     clearImage,
     uploading,
-    submitImage,
+    processImage,
     rescaledSize,
     setRescaledSize
   };

@@ -4,13 +4,13 @@ import { twMerge } from "tailwind-merge";
 import { FaTrash } from "react-icons/fa";
 import IconButton from "@/components/icon-button";
 import { RiRobot2Fill } from "react-icons/ri";
-import InputSample from "./sample";
 import ImageInput from "./image-input";
 import React, { useMemo } from "react";
 import ImageViewer from "./image-viewer";
 import Reveal from "@/components/framer-motion/reveal-on-scroll";
 import useModelInput from "@/hooks/useModelInput";
-import { Size } from "@/helper/model-input";
+import { Size } from "@/helper/model-input/preprocessing";
+import { tryToExecute } from "@/helper/integration";
 
 const determineRevealProps = (imageUrl: string | null, rescaledSize: Size | null) => {
   const transition = imageUrl ? { initial: { y: 20 }, animate: { y: 0 } } : { initial: { y: 0 }, animate: { y: 20 } }
@@ -20,7 +20,8 @@ const determineRevealProps = (imageUrl: string | null, rescaledSize: Size | null
 }
 
 export default function ModelInput() {
-  const { imageUrl, setImageUrl, clearImage, setRescaledSize, rescaledSize } = useModelInput();
+  const { imageUrl, setImageUrl, clearImage, setRescaledSize, processImage, rescaledSize } = useModelInput();
+  const onSend = tryToExecute(processImage)
 
   const revealProps = useMemo(() => determineRevealProps(imageUrl, rescaledSize), [imageUrl, rescaledSize])
 
@@ -37,7 +38,7 @@ export default function ModelInput() {
 
       <div className={twMerge("ml-auto", "flex flex-row gap-x-5")}>
         <IconButton title="Clear" Icon={FaTrash} onClick={clearImage} type="secondary" />
-        <IconButton title="Send" Icon={RiRobot2Fill} onClick={() => { }} />
+        <IconButton title="Send" Icon={RiRobot2Fill} onClick={onSend} />
       </div>
     </div>
   )

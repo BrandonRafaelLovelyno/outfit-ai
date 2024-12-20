@@ -3,6 +3,7 @@
 import { FaImage } from "react-icons/fa";
 import { CiServer } from "react-icons/ci";
 import axios from "axios";
+import { getBackendUrl } from "./model-input/integration";
 
 const INFORMATION = {
   inputRecommendation: "Ensure the cloth is positioned centrally in the photos and stands out with a contrasting color against the background for optimal model input",
@@ -29,10 +30,8 @@ export const checkServerAvailability = async (backendUrl: string) => {
 export const getInformation = async () => {
   let serverAvailability = false;
 
-  const backendUrl = process.env.BACKEND_URL
-  if (backendUrl) {
-    serverAvailability = await checkServerAvailability(backendUrl);
-  }
+  const backendUrl = getBackendUrl()
+  serverAvailability = await checkServerAvailability(backendUrl);
 
   return [
     { title: "Input Recommendation", description: INFORMATION.inputRecommendation, Icon: FaImage, textColor: "#F2F4F7", backgroundColor: "rgba(242, 244, 247, 0.3)" },

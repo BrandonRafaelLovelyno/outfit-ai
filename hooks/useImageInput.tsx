@@ -1,5 +1,5 @@
 import { IMAGE_RESOLUTION } from "@/constant/model-input";
-import { getImageUrl, getRescaledSize, cleanImage } from "@/helper/model-input";
+import { getImageUrl, getRescaledSize, cleanImage } from "@/helper/model-input/preprocessing";
 import { DragEvent, useRef, useState } from "react";
 
 interface Props {
@@ -16,7 +16,7 @@ export default function useImageInput({ setImageUrl, setRescaledSize }: Props) {
     inputRef.current?.click();
   }
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const setImageStates = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = await cleanImage(e, IMAGE_RESOLUTION.desktop.height, 1);
 
     const imageUrl = getImageUrl(file);
@@ -39,5 +39,5 @@ export default function useImageInput({ setImageUrl, setRescaledSize }: Props) {
   }
 
 
-  return { clickInput, handleFileChange, triggerIsDrag, inputRef, isDrag }
+  return { clickInput, setImageStates, triggerIsDrag, inputRef, isDrag }
 }

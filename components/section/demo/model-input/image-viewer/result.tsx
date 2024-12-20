@@ -1,7 +1,9 @@
+"use client"
+
 import BoundingBox from "@/components/bounding-box";
-import ClassCard from "@/components/container/class-card";
-import { CLOTH_CLASSES, ClothClass } from "@/constant/bounding-box";
+import { CLOTH_CLASSES, } from "@/constant/bounding-box";
 import { determineStyle } from "@/helper/model-input/result";
+import { useModelInput } from "@/provider/model-input";
 import { twMerge } from "tailwind-merge";
 
 export interface Result {
@@ -10,17 +12,15 @@ export interface Result {
   bbox: number[];
 }
 
-interface Props {
-  result: Result[];
-  ratio: number;
-}
+export default function ModelResult() {
+  const { results, ratio } = useModelInput();
 
+  if (!results || !ratio) return null;
 
-export default function ModelResult({ result, ratio }: Props) {
   return (
     <>
       {
-        result.map((res, index) => (
+        results.map((res, index) => (
           <div key={index} className={twMerge("absolute")} style={determineStyle(res.bbox, ratio)}>
             <BoundingBox clothClass={CLOTH_CLASSES[res.label - 1]} isHero={false} />
           </div>

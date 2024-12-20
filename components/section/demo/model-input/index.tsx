@@ -8,9 +8,9 @@ import ImageInput from "./image-input";
 import React, { useMemo } from "react";
 import ImageViewer from "./image-viewer/index";
 import Reveal from "@/components/framer-motion/reveal-on-scroll";
-import useModelInput from "@/hooks/useModelInput";
 import { Size } from "@/helper/model-input/preprocessing";
 import { tryToExecute } from "@/helper/integration";
+import { useModelInput } from "@/provider/model-input";
 
 const determineRevealProps = (imageUrl: string | null, rescaledSize: Size | null) => {
   const transition = imageUrl ? { initial: { y: 20 }, animate: { y: 0 } } : { initial: { y: 0 }, animate: { y: 20 } }
@@ -20,7 +20,7 @@ const determineRevealProps = (imageUrl: string | null, rescaledSize: Size | null
 }
 
 export default function ModelInput() {
-  const { imageUrl, setImageUrl, clearImage, setRescaledSize, processImage, rescaledSize, ratio, setRatio, results, setResults } = useModelInput();
+  const { imageUrl, clearImage, processImage, rescaledSize } = useModelInput();
   const onSend = tryToExecute(processImage)
 
   const revealProps = useMemo(() => determineRevealProps(imageUrl, rescaledSize), [imageUrl, rescaledSize])
@@ -32,7 +32,7 @@ export default function ModelInput() {
 
       <Reveal {...revealProps} key={imageUrl ? "viewer" : "input"}>
         {
-          imageUrl ? <ImageViewer imageUrl={imageUrl} results={results} ratio={ratio} /> : <ImageInput setImageUrl={setImageUrl} setRescaledSize={setRescaledSize} setRatio={setRatio} />
+          imageUrl ? <ImageViewer /> : <ImageInput />
         }
       </Reveal>
 

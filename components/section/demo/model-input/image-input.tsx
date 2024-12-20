@@ -1,16 +1,11 @@
 import { twMerge } from "tailwind-merge";
 import { FaImage } from "react-icons/fa";
 import useImageInput from "@/hooks/useImageInput";
-import { Size } from "@/helper/model-input/preprocessing";
 import { tryToExecute } from "@/helper/integration";
+import { useModelInput } from "@/provider/model-input";
 
-interface Props {
-  setImageUrl: (image: string) => void
-  setRescaledSize: (size: Size) => void
-  setRatio: (ratio: number) => void
-}
-
-export default function ImageInput({ setImageUrl, setRescaledSize, setRatio }: Props) {
+export default function ImageInput() {
+  const { setImageUrl, setRescaledSize, setRatio } = useModelInput();
   const { triggerIsDrag, clickInput, setImageStates, inputRef, isDrag } = useImageInput({ setImageUrl, setRescaledSize, setRatio });
 
   const onChange = tryToExecute(setImageStates)

@@ -1,3 +1,4 @@
+import { ModelInputProvider } from "@/provider/model-input";
 import "./globals.css";
 
 import type { Metadata } from "next";
@@ -30,7 +31,9 @@ export default function RootLayout({
         <Toaster
           position="bottom-left"
         />
-        {children}
+        <ModelInputProvider>
+          {children}
+        </ModelInputProvider>
       </body>
     </html>
   );

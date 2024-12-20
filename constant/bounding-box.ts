@@ -42,14 +42,14 @@ export const BOUNDING_BOX_COLOR: { [key in ClothClass]: BoundingBoxBackground } 
     border: "#387478"
   },
   Vest: {
-    headingBg: "secondary",
-    mainBg: "secondary",
-    border: "secondary"
+    headingBg: "rgba(242, 244, 247, 0.2)",
+    mainBg: "rgba(242, 244, 247, 0.4)",
+    border: "#F2F4F7"
   },
   Sling: {
-    headingBg: "secondary",
-    mainBg: "secondary",
-    border: "secondary"
+    headingBg: "rgba(242, 244, 247, 0.2)",
+    mainBg: "rgba(242, 244, 247, 0.4)",
+    border: "#F2F4F7"
   },
   "Sling Dress": {
     headingBg: "#FFB26F",

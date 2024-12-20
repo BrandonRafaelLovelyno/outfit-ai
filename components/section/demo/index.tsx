@@ -1,11 +1,16 @@
+"use client"
+
 import TitledSection from "@/components/container/titled-section";
 import DemoTitle from "./title";
 import ModelInput from "./model-input";
 import { twMerge } from "tailwind-merge";
 import Reveal from "@/components/framer-motion/reveal-on-scroll";
 import DemoInformation from "./information";
+import { useModelInput } from "@/hooks/useModelInput";
 
 export default function DemoSection() {
+  const { imageUrl } = useModelInput();
+
   return (
     <TitledSection title={<DemoTitle />}>
       <div className={twMerge("w-full", "flex flex-row gap-x-14 justify-center")}>

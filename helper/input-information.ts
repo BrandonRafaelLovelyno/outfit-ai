@@ -1,5 +1,3 @@
-"use server"
-
 import { FaImage } from "react-icons/fa";
 import { CiServer } from "react-icons/ci";
 import axios from "axios";

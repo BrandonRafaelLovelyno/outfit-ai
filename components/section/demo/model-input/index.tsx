@@ -10,7 +10,7 @@ import ImageViewer from "./image-viewer/index";
 import Reveal from "@/components/framer-motion/reveal-on-scroll";
 import { Size } from "@/helper/model-input/preprocessing";
 import { tryToExecute } from "@/helper/integration";
-import { useModelInput } from "@/provider/model-input";
+import { useModelInput } from "@/hooks/useModelInput";
 
 const determineRevealProps = (imageUrl: string | null, rescaledSize: Size | null) => {
   const transition = imageUrl ? { initial: { y: 20 }, animate: { y: 0 } } : { initial: { y: 0 }, animate: { y: 20 } }

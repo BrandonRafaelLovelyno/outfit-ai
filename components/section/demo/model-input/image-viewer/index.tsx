@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
-import ModelResult, { Result } from "./result";
-import { useModelInput } from "@/provider/model-input";
+import ModelResult from "./result";
+import { useModelInput } from "@/hooks/useModelInput";
 
 export default function ImageViewer() {
   const { imageUrl, results, ratio } = useModelInput();

@@ -16,6 +16,8 @@ export const ModelInputProvider: React.FC<{ children: ReactNode }> = ({ children
   const clearImage = () => {
     setImageUrl(null);
     setRescaledSize(null);
+    setRatio(undefined);
+    setResults(undefined);
   };
 
   const processImage = async () => {

@@ -14,7 +14,7 @@ interface Props {
   y?: number;
 }
 
-export default function Reveal({ children, className, duration = 0.5, delay = 0.5, x = 0, y = 0, style = {} }: Props) {
+export default function Reveal({ children, className, duration = 0.5, delay = 0.5, x = -20, y = 20, style = {} }: Props) {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
@@ -25,7 +25,7 @@ export default function Reveal({ children, className, duration = 0.5, delay = 0.
     if (isInView) animation.start("visible")
   }, [isInView]);
 
-  return <motion.div ref={ref} className={twMerge("relative", className)} variants={{ hidden: { x: x || -20, y: y || 20, opacity: 0 }, visible: { x: 0, y: 0, opacity: 100 } }}
+  return <motion.div ref={ref} className={twMerge("relative", className)} variants={{ hidden: { x, y, opacity: 0 }, visible: { x: 0, y: 0, opacity: 100 } }}
     transition={{ duration: duration, delay: delay }}
     animate={animation} initial="hidden"
     style={style}

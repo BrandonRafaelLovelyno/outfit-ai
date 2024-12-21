@@ -7,9 +7,10 @@ import { twMerge } from "tailwind-merge";
 import Reveal from "@/components/framer-motion/reveal-on-scroll";
 import DemoInformation from "./information";
 import { useModelInput } from "@/hooks/useModelInput";
+import RevealOnPresence from "@/components/framer-motion/reveal-on-presence";
 
 export default function DemoSection() {
-  const { imageUrl } = useModelInput();
+  const { results } = useModelInput();
 
   return (
     <TitledSection title={<DemoTitle />}>
@@ -19,7 +20,9 @@ export default function DemoSection() {
         </Reveal>
 
         <Reveal className={twMerge("w-[450px] h-fit")} x={0} y={20} >
-          <DemoInformation />
+          <RevealOnPresence>
+            {!results && <DemoInformation />}
+          </RevealOnPresence>
         </Reveal>
       </div>
     </TitledSection>)

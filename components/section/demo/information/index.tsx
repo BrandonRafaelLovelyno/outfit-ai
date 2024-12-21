@@ -14,7 +14,7 @@ export default function DemoInformation() {
 
   useEffect(() => {
     updateInformation();
-  },)
+  }, [])
 
   return (
     <div className={twMerge("w-full h-full", "flex flex-col gap-y-6 items-start")}>

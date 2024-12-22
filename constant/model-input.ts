@@ -15,7 +15,7 @@ export const IMAGE_RESOLUTION: { [key in I_Screen]: ResolutionConstraint } = {
   desktop: {
     width: {
       min: 500,
-      max: 1200
+      max: 1100,
     },
     height: 800
   },

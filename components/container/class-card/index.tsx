@@ -1,23 +1,15 @@
 import { ClothClass } from "@/constant/bounding-box";
-import { CLASS_CARD_COLOR } from "@/constant/classes-card";
+import { getCardProps } from "@/helper/class-card";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 
 interface Props {
   clothClass: ClothClass;
-  percentage?: number;
+  confidence?: number;
 }
 
-const getImageFileName = (clothClass: ClothClass) => {
-  const fileName = clothClass.replace(/ /g, "-").toLowerCase();
-  return fileName;
-}
-
-export default function ClassCard({ clothClass, percentage }: Props) {
-  const imageDir = `/classes/${getImageFileName(clothClass)}.svg`;
-
-  const bgColor = CLASS_CARD_COLOR[clothClass].background
-  const iconColor = CLASS_CARD_COLOR[clothClass].icon
+export default function ClassCard({ clothClass, confidence }: Props) {
+  const { imageDir, bgColor, iconColor, displayedConfidence } = getCardProps(clothClass, confidence)
 
   return (
     <div className={twMerge("flex flex-row items-center gap-x-5", "p-6", "rounded-lg")} style={{ background: bgColor }}>
@@ -27,8 +19,8 @@ export default function ClassCard({ clothClass, percentage }: Props) {
       <div className={twMerge("flex flex-col")} style={{ color: iconColor }} >
         <h1>{clothClass}</h1>
         {
-          percentage &&
-          <h2>{percentage}%</h2>
+          displayedConfidence &&
+          <h2>{displayedConfidence}</h2>
         }
       </div>
     </div>

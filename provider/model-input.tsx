@@ -2,7 +2,7 @@
 
 import React, { useState, ReactNode } from "react";
 import { Result } from "@/components/section/demo/model-input/image-viewer/result";
-import { callServer } from "@/helper/model-input/integration";
+import { callServer, cleanResults } from "@/helper/model-input/integration";
 import { Size } from "@/helper/model-input/preprocessing";
 import ModelInputContext from "@/context/model-input";
 
@@ -24,7 +24,8 @@ export const ModelInputProvider: React.FC<{ children: ReactNode }> = ({ children
     if (!imageUrl) throw new Error("No Image to process");
 
     const results: Result[] = await callServer(imageUrl);
-    setResults(results);
+    const cleanedResults = cleanResults(results);
+    setResults(cleanedResults);
   };
 
   return (

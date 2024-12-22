@@ -62,3 +62,9 @@ export const callServer = async (imageUrl: string): Promise<Result[]> => {
 
   return result
 }
+
+export const cleanResults = (results: Result[]): Result[] => {
+  const cleanedResults = results.map(result => ({ ...result, label: result.label - 1 }));
+
+  return cleanedResults
+}

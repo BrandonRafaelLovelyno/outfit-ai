@@ -4,7 +4,6 @@ import { IconType } from "react-icons"
 import { IoLayers } from "react-icons/io5";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { MdDataset } from "react-icons/md";
-import ModelCard from "@/components/section/model/model-card";
 import { twMerge } from "tailwind-merge";
 import ModelCards from "./cards";
 

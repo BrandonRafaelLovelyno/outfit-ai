@@ -13,7 +13,7 @@ export default function RevealOnPresence({ children, x = 0, y = 20, duration = 0
     <AnimatePresence>
       <motion.div initial={{ x, y, opacity: 0 }} animate={{ x: 0, y: 0, opacity: 100 }}
         exit={{ x, y, opacity: 0 }} transition={{ duration, delay }}
-        key={Math.random()}
+        key={"key"}
       >
         {children}
       </motion.div>

@@ -22,7 +22,7 @@ export default function ModelResult() {
       {
         results.map((res, index) => (
           <div key={index} className={twMerge("absolute")} style={determineStyle(res.bbox, ratio)}>
-            <BoundingBox clothClass={CLOTH_CLASSES[res.label - 1]} isHero={false} />
+            <BoundingBox clothClass={CLOTH_CLASSES[res.label]} isHero={false} />
           </div>
         ))
       }

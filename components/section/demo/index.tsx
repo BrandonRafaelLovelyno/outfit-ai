@@ -8,6 +8,7 @@ import Reveal from "@/components/framer-motion/reveal-on-scroll";
 import DemoInformation from "./information";
 import { useModelInput } from "@/hooks/useModelInput";
 import RevealOnPresence from "@/components/framer-motion/reveal-on-presence";
+import DemoResult from "./result";
 
 export default function DemoSection() {
   const { results } = useModelInput();
@@ -19,9 +20,13 @@ export default function DemoSection() {
           <ModelInput />
         </Reveal>
 
-        <Reveal className={twMerge("w-[450px] h-fit")} x={0} y={20} >
+        <Reveal className={twMerge(!results && "max-w-[450px]", "w-full h-fit")} x={0} y={20} >
           <RevealOnPresence>
             {!results && <DemoInformation />}
+          </RevealOnPresence>
+
+          <RevealOnPresence>
+            {results && <DemoResult />}
           </RevealOnPresence>
         </Reveal>
       </div>

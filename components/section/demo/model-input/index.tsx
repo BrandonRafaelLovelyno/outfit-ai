@@ -7,7 +7,7 @@ import { RiRobot2Fill } from "react-icons/ri";
 import ImageInput from "./image-input";
 import React, { useMemo } from "react";
 import ImageViewer from "./image-viewer/index";
-import Reveal from "@/components/framer-motion/reveal-on-scroll";
+import RevealOnScroll from "@/components/framer-motion/reveal-on-scroll";
 import { Size } from "@/helper/model-input/preprocessing";
 import { tryToExecute } from "@/helper/integration";
 import { useModelInput } from "@/hooks/useModelInput";
@@ -30,11 +30,11 @@ export default function ModelInput() {
 
       <h2>Model Input</h2>
 
-      <Reveal {...revealProps} key={imageUrl ? "viewer" : "input"}>
+      <RevealOnScroll {...revealProps} key={imageUrl ? "viewer" : "input"}>
         {
           imageUrl ? <ImageViewer /> : <ImageInput />
         }
-      </Reveal>
+      </RevealOnScroll>
 
       <div className={twMerge("ml-auto", "flex flex-row gap-x-5")}>
         <IconButton title="Clear" Icon={FaTrash} onClick={clearImage} type="secondary" />

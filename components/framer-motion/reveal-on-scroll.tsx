@@ -14,7 +14,7 @@ interface Props {
   y?: number;
 }
 
-export default function Reveal({ children, className, duration = 0.5, delay = 0.5, x = -20, y = 20, style = {} }: Props) {
+export default function RevealOnScroll({ children, className, duration = 0.5, delay = 0.5, x = -20, y = 20, style = {} }: Props) {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,

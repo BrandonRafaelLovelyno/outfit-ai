@@ -20,8 +20,8 @@ const determineRevealProps = (imageUrl: string | null, rescaledSize: Size | null
 }
 
 export default function ModelInput() {
-  const { imageUrl, clearImage, processImage, rescaledSize } = useModelInput();
-  const onSend = tryToExecute(processImage)
+  const { imageUrl, clearImage, processImage, rescaledSize, uploading, setUploading } = useModelInput();
+  const onSend = tryToExecute(processImage, setUploading)
 
   const revealProps = useMemo(() => determineRevealProps(imageUrl, rescaledSize), [imageUrl, rescaledSize])
 
@@ -37,8 +37,8 @@ export default function ModelInput() {
       </RevealOnScroll>
 
       <div className={twMerge("ml-auto", "flex flex-row gap-x-5")}>
-        <IconButton title="Clear" Icon={FaTrash} onClick={clearImage} type="secondary" />
-        <IconButton title="Send" Icon={RiRobot2Fill} onClick={onSend} />
+        <IconButton disabled={uploading} title="Clear" Icon={FaTrash} onClick={clearImage} type="secondary" />
+        <IconButton disabled={uploading} title="Send" Icon={RiRobot2Fill} onClick={onSend} />
       </div>
     </div>
   )

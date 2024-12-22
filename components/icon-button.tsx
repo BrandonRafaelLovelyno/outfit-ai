@@ -6,9 +6,10 @@ interface Props {
   title: string;
   Icon: IconType;
   type?: "primary" | "secondary";
+  disabled?: boolean;
 }
 
-export default function IconButton({ onClick, title, Icon, type = "primary" }: Props) {
+export default function IconButton({ onClick, title, Icon, type = "primary", disabled = false }: Props) {
   const isPrimary = type == "primary";
   return (
     <button
@@ -19,8 +20,10 @@ export default function IconButton({ onClick, title, Icon, type = "primary" }: P
         "rounded-xl",
         isPrimary ? "bg-secondary hover:bg-primary-light" : "border-2 border-acent-purple-normal hover:bg-acent-purple-normal",
         isPrimary ? "text-primary-light hover:text-secondary" : "text-acent-purple-light hover:text-secondary",
+        disabled ? "cursor-not-allowed opacity-45" : "cursor-pointer",
         "transition-all duration-200"
       )}
+      disabled={disabled}
       onClick={onClick}
     >
       <p className={twMerge("text-xl font-bold")}>{title}</p>

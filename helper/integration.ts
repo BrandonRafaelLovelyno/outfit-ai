@@ -26,8 +26,6 @@ export const getErrorMessage = (err: any) => {
 }
 
 const handleError = (err: any) => {
-  console.error(err);
-
   const message = getErrorMessage(err);
 
   toast.error(message);

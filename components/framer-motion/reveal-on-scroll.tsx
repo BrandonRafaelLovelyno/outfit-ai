@@ -25,7 +25,7 @@ export default function RevealOnScroll({ children, className, duration = 0.5, de
     if (isInView) animation.start("visible")
   }, [isInView]);
 
-  return <motion.div ref={ref} className={twMerge("relative", className)} variants={{ hidden: { x, y, opacity: 0 }, visible: { x: 0, y: 0, opacity: 100 } }}
+  return <motion.div ref={ref} className={twMerge("relative", "overflow-hidden", className)} variants={{ hidden: { x, y, opacity: 0 }, visible: { x: 0, y: 0, opacity: 100 } }}
     transition={{ duration: duration, delay: delay }}
     animate={animation} initial="hidden"
     style={style}

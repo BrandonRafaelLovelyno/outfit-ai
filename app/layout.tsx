@@ -26,16 +26,13 @@ export default function RootLayout({
           `${inter.className} antialiased`,
           "px-40",
           "bg-primary-dark",
-          "tracking-wider"
+          "tracking-wider",
+          "overflow-x-hidden"
         )}
       >
-        <Toaster
-          position="bottom-left"
-        />
+        <Toaster position="bottom-left" />
         <ModelInputProvider>
-          <DemoResultProvider>
-            {children}
-          </DemoResultProvider>
+          <DemoResultProvider>{children}</DemoResultProvider>
         </ModelInputProvider>
       </body>
     </html>

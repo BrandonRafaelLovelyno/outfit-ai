@@ -7,7 +7,14 @@ import { twMerge } from "tailwind-merge";
 
 export default function Home() {
   return (
-    <main className={twMerge("relative", "w-full h-fit overflow-y-auto", "flex flex-col", "pb-10")}>
+    <main
+      className={twMerge(
+        "relative",
+        "w-full h-fit overflow-y-auto overflow-x-hidden",
+        "flex flex-col",
+        "pb-10"
+      )}
+    >
       <div className={twMerge("absolute", "w-full h-fit")}>
         <Navbar />
       </div>

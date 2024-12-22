@@ -47,3 +47,33 @@ section {
 .boundingHero {
   animation: boundingHero 2s infinite;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 40px;
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+  width: 5px;
+}
+
+::-webkit-scrollbar-corner {
+  background: #eee;
+  width: 5px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

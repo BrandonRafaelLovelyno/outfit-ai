@@ -14,7 +14,7 @@ export default function InformationAndResult() {
   const { results } = useModelInput();
 
   return (
-    <AnimatePresence mode="popLayout">
+    <AnimatePresence mode="wait">
       {results ? (
         <motion.div {...MOTION_PROPS} key="results" className={twMerge("max-w-[800px] w-fit")}>
           <DemoResult />

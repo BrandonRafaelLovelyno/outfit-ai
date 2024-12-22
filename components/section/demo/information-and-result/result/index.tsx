@@ -1,9 +1,8 @@
 "use client"
 
-import ClassCard from "@/components/container/class-card"
-import { CLOTH_CLASSES } from "@/constant/bounding-box"
 import { useModelInput } from "@/hooks/useModelInput"
 import { twMerge } from "tailwind-merge"
+import ResultCard from "./card"
 
 export default function DemoResult() {
   const { results } = useModelInput()
@@ -14,7 +13,7 @@ export default function DemoResult() {
     <div className={twMerge("w-full", "flex flex-row flex-wrap gap-x-5 gap-y-3")}>
       {
         results.map((result, index) => (
-          <ClassCard key={index} clothClass={CLOTH_CLASSES[result.label]} confidence={result.confidence} />
+          <ResultCard key={index} index={index} result={result} />
         ))
       }
     </div>

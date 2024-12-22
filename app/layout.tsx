@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import { twMerge } from "tailwind-merge";
+import { DemoResultProvider } from "@/provider/demo-result";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,7 +33,9 @@ export default function RootLayout({
           position="bottom-left"
         />
         <ModelInputProvider>
-          {children}
+          <DemoResultProvider>
+            {children}
+          </DemoResultProvider>
         </ModelInputProvider>
       </body>
     </html>

@@ -22,7 +22,7 @@ const getAllCard: () => React.ReactElement[] = () => {
 
 export default function ClassesSection() {
   const cards = getAllCard();
-  return <TitledSection title={<ClassesTitle />}>
+  return <TitledSection id={"class"} title={<ClassesTitle />}>
     <div className={twMerge("h-[350px]")}>
       <Carousel items={cards} itemPerSlide={7} />
     </div>

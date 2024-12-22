@@ -25,7 +25,7 @@ const MODEL_CARDS: { title: string, description: string, Icon: IconType }[] = [
 ]
 
 export default function ModelSection() {
-  return <TitledSection title={<ModelTitle />}>
+  return <TitledSection id={"model"} title={<ModelTitle />}>
     <div className={twMerge("w-full", "flex flex-row gap-x-8")}>
       <ModelCards cards={MODEL_CARDS} />
     </div>

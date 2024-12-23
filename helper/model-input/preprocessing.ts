@@ -34,11 +34,11 @@ const getSizeInScreen = (deviceSize: Size, DPR: number) => {
 
 export const cleanImage = async (e: React.ChangeEvent<HTMLInputElement>, targetHeight: number, DPR: number) => {
 
-  if (!e.target.files || !e.target.files[0]) throw new Error("No image selected;");
+  if (!e.target.files || !e.target.files[0]) throw new Error("No image selected");
   const file = e.target.files[0];
 
-  validateImageSize(file, targetHeight, DPR);
   validateImageExtension(file);
+  await validateImageSize(file, targetHeight, DPR);
 
   return file;
 }

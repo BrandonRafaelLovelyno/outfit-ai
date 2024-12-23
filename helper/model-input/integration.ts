@@ -49,16 +49,26 @@ const convertToResult = (data: Data): Result[] => {
   return result;
 }
 
-export const callServer = async (imageUrl: string): Promise<Result[]> => {
+const callServer = async (formData: FormData) => {
+  try {
+    const backendUrl = getBackendUrl();
+    const response = await axios.post(`${backendUrl}/predict`, formData)
+
+    return response.data
+  } catch (err) {
+    throw new Error("Failed to contact server")
+  }
+}
+
+export const submitToServer = async (imageUrl: string): Promise<Result[]> => {
   const file = await getImageFile(imageUrl);
 
   const formData = new FormData();
   formData.append("file", file);
 
-  const backendUrl = getBackendUrl();
-  const response = await axios.post(`${backendUrl}/predict`, formData)
+  const data = await callServer(formData);
 
-  const result = convertToResult(response.data);
+  const result = convertToResult(data);
 
   return result
 }

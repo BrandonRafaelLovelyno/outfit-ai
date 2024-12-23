@@ -3,8 +3,15 @@
 import IconButton from "@/components/icon-button";
 import { twMerge } from "tailwind-merge";
 import { RiRobot2Fill } from "react-icons/ri";
+import { useRouter } from "next/navigation";
 
 export default function HeroTitle() {
+  const router = useRouter()
+
+  const onClick = () => {
+    router.push("/#demo")
+  }
+
   return (
     <div className={twMerge("flex flex-col gap-y-5")}>
       <h1 className={twMerge("font-bold text-8xl text-secondary")}>
@@ -14,7 +21,7 @@ export default function HeroTitle() {
         Detect and classify clothes by 13 classes
       </h2>
       <div className={twMerge("w-fit")}>
-        <IconButton title="Try now" Icon={RiRobot2Fill} onClick={() => { }} />
+        <IconButton title="Try now" Icon={RiRobot2Fill} onClick={onClick} />
       </div>
     </div>
   );
